@@ -20,6 +20,18 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+.showing-up{
+    font-size: 0px;
+}
+.btn{
+    height: 1.7rem;
+    text-align: center;
+    background: #fff;
+    p{
+        padding: 10px 0;
+        font-size: .24rem;
+        color: rgb(107,107,107);
+    }
+}
 </style>
