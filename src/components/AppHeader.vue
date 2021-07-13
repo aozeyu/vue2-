@@ -1,7 +1,7 @@
 <template>
     <div class="app-header">
         <div class="header-bg">
-            <span class="back iconfont icon-fanhui"></span>
+            <span class="back iconfont icon-fanhui" v-show="showBack" @click="goBack"></span>
             <p class="header-title">
                 {{title}}
             </p>
@@ -19,6 +19,12 @@
                 default:'猫眼电影'
             },
             showBack: Boolean
+        },
+        methods:{
+            goBack(){
+                this.app.showTab = true
+                this.$router.go(-1)
+            }
         }
     }
 </script>

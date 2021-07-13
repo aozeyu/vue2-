@@ -12,6 +12,14 @@ Vue.prototype.$axios = axios
 Vue.prototype.dealImgUrl = function (url,replaceInfo='128.180') {
   return url.replace(/w\.h/,replaceInfo)
 }
+Vue.prototype.formatDate = function (str='-') {
+  let year = new Date().getFullYear()
+  let month = new Date().getMonth()+1
+  let day = new Date().getDate()
+  if (month<10) month ='0'+month
+  if (day<10) day = '0'+day
+  return `${year}${str}${month}${str}${day}`
+}
 new Vue({
   router,
   render: h => h(App)

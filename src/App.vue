@@ -1,14 +1,18 @@
 <template>
     <div id="app">
         <div id="nav">
-            <AppHeader v-show="showHeader" :show-back="showBack" :title="title"></AppHeader>
+            <AppHeader :show-back="showBack" :title="title" v-show="showHeader"></AppHeader>
+            <transition name="fade">
+                <router-view :city="city" @update-payorder="updatePayOrder"></router-view>
+            </transition>
+            <AppTabBar v-show="showTab" :login-status="loginStatus" @custom-update-title="updateTitle"></AppTabBar>
         </div>
-        <router-view/>
     </div>
 </template>
 
 <script>
     import AppHeader from "./components/AppHeader";
+    import AppTabBar from "./components/AppTabBar";
 
     export default {
         name: 'app',
@@ -42,8 +46,45 @@
             }
         },
         components: {
-            AppHeader
+            AppHeader,
+            AppTabBar
         }
     }
 </script>
+<style lang="less">
+    #app {
+        font-size: 0;
+        color: #424242;
+        position: relative;
+        background: #f5f5f5;
+    }
+    
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .25s;
+    }
+    
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
+    }
+    
+    .bounce-enter-active {
+        animation: bounce-in .3s;
+    }
+    
+    .bounce-leave-active {
+        animation: bounce-in .3s reverse;
+    }
+    
+    @keyframes bounce-in {
+        0%{
+            transform: scale(0);
+        }
+        50%{
+            transform: scale(1.5);
+        }
+        100%{
+            transform: scale(1);
+        }
+    }
+</style>
 
