@@ -5,8 +5,12 @@ import axios from "axios";
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import '../public/less/_theme.less'
+import MyButton from "./components/my-components/MyButton";
+import MyCell from "./components/my-components/MyCell";
 Vue.config.productionTip = false
 Vue.use(Mint)
+Vue.component('my-button',MyButton)
+Vue.component('my-cell',MyCell)
 Vue.prototype.$axios = axios
 //处理图片
 Vue.prototype.dealImgUrl = function (url,replaceInfo='128.180') {

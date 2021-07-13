@@ -52,6 +52,12 @@
         components:{
             UpComing,
             ShowingUp
+        },
+        beforeRouteEnter(to,from,next){
+            next(vm => {
+                vm.app.showBack = false
+                vm.app.title = '猫眼电影'
+            })
         }
     }
 </script>
